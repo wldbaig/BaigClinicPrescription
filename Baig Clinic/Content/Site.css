@@ -1,0 +1,32 @@
+﻿body {
+  
+    padding-bottom: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.marging0 {
+    width: 1px;
+}
+
+.marging {
+    width: 80px;
+}
+
+.marging1 {
+    width: 550px;
+}
+
+.bordering {
+    border: solid 2px #e9ecef;
+}
+
+.mr {
+    margin-right: 151px;
+}
+   

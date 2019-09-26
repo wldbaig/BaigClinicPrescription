@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Baig Clininc";
+}
+
+<div class="container">
+    <br />
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>Baig Clinic | Dr. Muhammad Naeem Baig</h3>
+            <h4>MBBS, PM DC. Reg No. 9568-P</h4>
+            <h5>PHC NO-R-03240</h5>
+            <h6>VCO: </h6>
+            <h5>@ViewBag.Date</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center"><label>@ViewBag.Date</label></div>
+        <hr />
+    </div>
+    <br />
+    <div class="row">
+        @Html.ActionLink("Add New Prescription", "Create", null,new { @class= "btn btn-success" })
+         
+    </div>
+</div>

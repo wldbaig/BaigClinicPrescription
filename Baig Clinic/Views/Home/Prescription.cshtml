@@ -1,0 +1,186 @@
+﻿@model Baig_Clinic.Models.PrescriptionViewModel
+@{
+    ViewBag.Title = "Baig Clininc";
+
+}
+
+<div class="container-fluid ">
+    <br />
+    <div class="row">
+        @Html.ActionLink("Add New Prescription", "Create", null, new { @class = "btn btn-success" })
+        <button id="printbtn" class="btn btn-default">Print</button>
+    </div>
+
+    <div class="" id="print">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>Baig Clinic | Dr. Muhammad Naeem Baig</h3>
+                <h4>MBBS, PM DC. Reg No. 9568-P</h4>
+                <h5>PHC NO-R-03240</h5>
+                <h6>VCO: </h6>
+                <h5>@ViewBag.Date</h5>
+
+            </div>
+        </div>
+        <hr>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-1"><label class="ml-4">Name:</label> </div>
+            <div class="col-md-5">
+                @Html.DisplayFor(m => m.Name)
+            </div>
+            <div class="col-md-1"><label class="ml-5">Age:</label> </div> <div class="col-md-5">
+                @Html.DisplayFor(m => m.Age)
+            </div>
+            <div class="col-md-1 mt-3"><label class="ml-4"> Address:</label> </div> <div class="col-md-11 mt-3">
+                @Html.DisplayFor(m => m.Address)
+            </div>
+
+
+
+            <div class="col-md-1"><label class="ml-4">BP:</label> </div>
+            <div class="col-md-5">
+                @Html.DisplayFor(m => m.BloodPressure)
+            </div>
+            <div class="col-md-1"><label class="ml-5">Temperature:</label> </div> <div class="col-md-5">
+                @Html.DisplayFor(m => m.Temperature)
+            </div>
+
+
+            <div class="col-md-1 mt-3"><label class="ml-4"> Address:</label> </div> <div class="col-md-11 mt-3">
+                @Html.DisplayFor(m => m.Diagnose)
+            </div>
+        </div>
+
+
+        <br />
+        <br />
+
+        <table class="table table-bordered bordering">
+            <thead>
+                <tr>
+                    <th class="marging0">
+                        Sr.
+                    </th>
+                    <th class="marging1">
+                        Medicine + Type
+                    </th>
+                    <th class="w-25">
+                        Strength
+                    </th>
+                    <th class="marging">
+                        M
+                    </th>
+                    <th class="marging">
+                        E
+                    </th>
+                    <th class="marging">
+                        N
+                    </th>
+
+                    <th class="marging">
+                        No. Of Days
+                    </th>
+                    <th class="marging">
+                        Once A Week
+                    </th>
+                    <th class="marging">
+                        Once in 2 Week
+                    </th>
+                    <th class="marging">
+                        Once A Month
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i = 0; i < Model.prescriptions.prescriptionDetailList.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            @{var c = i + 1;}
+                            <text>@c</text>
+                        </td>
+                        <td>@Model.prescriptions.prescriptionDetailList[i].MedicineName</td>
+                        <td>@Model.prescriptions.prescriptionDetailList[i].Strength</td>
+                        <td>@Model.prescriptions.prescriptionDetailList[i].MorningDose</td>
+                        <td>@Model.prescriptions.prescriptionDetailList[i].EveningDose</td>
+                        <td>@Model.prescriptions.prescriptionDetailList[i].NightDose</td>
+                        <td>@Model.prescriptions.prescriptionDetailList[i].NoOfDays</td>
+                        <td>
+                            @if (Model.prescriptions.prescriptionDetailList[i].OnceAWeek)
+                            {
+                                <text>Yes</text>
+                            }
+                        </td>
+                        <td>
+                            @if (Model.prescriptions.prescriptionDetailList[i].OnceInTwoWeek)
+                            {
+                                <text>Yes</text>
+                            }
+                        </td>
+                        <td>
+                            @if (Model.prescriptions.prescriptionDetailList[i].OnceAMonth)
+                            {
+                                <text>Yes</text>
+                            }
+                        </td>
+                    </tr>
+
+                }
+
+
+            </tbody>
+
+        </table>
+        <div class="row justify-content-center">
+            <div class="form-group w-75 ">
+                <label class="font-weight-bold " for="comment">Comments:</label>
+                @Html.DisplayFor(m => m.Comments)
+            </div>
+
+        </div>
+
+        <hr />
+
+        <div class="form-group w-75 ">
+
+            Timings: Winter : Mon-Sat: (09:00am - 01:00pm) --- Lunch Break --- (04:00pm - 08:00pm)
+            <br />
+            Timings: Summer : Mon-Sat: (08:00am - 01:00pm) --- Lunch Break --- (05:00pm - 09:00pm)
+            <br />
+            Note: This prescription is not valid for court use.
+
+        </div>
+    </div>
+
+
+</div>
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+
+    </script>
+
+    <script src="~/Scripts/divjs.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //This execute when entire finished loaded
+
+            $('#print').printElement({
+                css: 'extend'
+            });
+        });
+
+        $('#printbtn').on('click', function () {
+            $('#print').printElement({
+                css: 'extend'
+            });
+
+        });
+    </script>
+
+}
